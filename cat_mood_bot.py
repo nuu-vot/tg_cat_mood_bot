@@ -25,7 +25,7 @@ def send_photo(message: types.Message):
     bot.send_photo(message.chat.id, photo=open(images, 'rb'))
 
 
-@bot.message_handler(commands=['setrandom'])
+@bot.message_handler(commands=['/setrandom'])
 def start_command_handler(message: types.Message):
     if len(message.text.split()) > 1 and message.text.split()[1].isdigit() and len(message.text.split()[1]) < 4:
         random_chanse[str(message.chat.id)] = int(message.text.split()[1])
@@ -45,9 +45,9 @@ def start_command_handler(message: types.Message):
 def start_command_handler(message: types.Message):
     bot.send_message(
         chat_id=message.chat.id,
-        text='Этот бот отправляет котомемы \nКаково твое настроение?: \nМожно добавить в групповой чат'
+        text='Этот бот отправляет котомемы \nМожно добавить в групповой чат'
              '\nДля частоты срабатывания триггера используй команду:'
-             '\n/setrandom@cat_meme_bot 0-100 (шанс срабатывания триггера)',
+             '\n/setrandom 0-100 (шанс срабатывания триггера)',
         reply_markup=card_type_keybaord,
     )
 
